@@ -1,6 +1,12 @@
 public class Pitfall extends Piece{
-	public Pitfall(){
-		this.isEmpty = false;
+	public Pitfall(int row, int column){
+		super.row = row;
+		super.column = column;
+	}
+
+	public static void main(String[] Args){
+		Pitfall pit = new Pitfall(1, 2);
+		System.out.println(pit.row);
 	}
 
 	

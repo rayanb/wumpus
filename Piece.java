@@ -1,6 +1,7 @@
 public class Piece {
-	int position;
+	int row;
+	int column;
 	public Piece(){
-
+		
 	}
 }

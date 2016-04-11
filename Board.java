@@ -6,7 +6,9 @@ class Board{
 	private int wump = 1;
 	private int adventurer = 1;
 	private int pitfalls = size/2;
-	private int superbards = size/2;
+	private int superbats = size/2;
+	private int exit = 1;
+	private int treasure = 1;
 	public Piece[][] pieces;
 
 
@@ -14,15 +16,37 @@ class Board{
 
 	public Board(){
 		this.pieces = new Piece[size][size];
+		for(int i =0; i< superbats;i++){
+			createSuperbat();
+			createPitfall();
+		}
+		createAdventurer();
+		createWumpus();
+		createExit();
+		createTreasure();
+		int i = 0;
+		for(Piece[] pieces:this.pieces){
+			System.out.println("-----");
+			for(Piece piece : pieces){
+
+				System.out.print("| "+piece+" |");
+				if(piece != null){
+				  System.out.print(piece.row + "," + piece.column);
+				}
+				i++;
+			}
+			System.out.println("----");
+		}
+		System.out.println("count:"+i);
 	}
 
 	public static void main(String[] Args){
 		Board board = new Board();
 		board.setPieces();
+		System.out.println(board.size);
 	}
 
 	public void setPieces(){
-		pieces[2][4]
 
 	}
 
@@ -32,7 +56,7 @@ class Board{
 		int x = r.nextInt(size);
 		int y = r.nextInt(size);
 		if(this.pieces[x][y] == null){
-		    this.pieces[x][y] = new Adventurer();	
+		    this.pieces[x][y] = new Adventurer(x, y);	
 		}
 		else{
 			createAdventurer();
@@ -43,7 +67,7 @@ class Board{
 		int x = r.nextInt(size);
 		int y = r.nextInt(size);
 		if(this.pieces[x][y] == null){
-		    this.pieces[x][y] = new Wumpus();	
+		    this.pieces[x][y] = new Wumpus(x, y);	
 		}
 		else{
 			createWumpus();
@@ -54,23 +78,44 @@ class Board{
 		int x = r.nextInt(size);
 		int y = r.nextInt(size);
 		if(this.pieces[x][y] == null){
-		    this.pieces[x][y] = new Pitfall();	
+		    this.pieces[x][y] = new Pitfall(x, y);	
 		}
 		else{
 			createPitfall();
 		}
 	}
 
-	public void createSuperbar(){
+	public void createSuperbat(){
 		int x = r.nextInt(size);
 		int y = r.nextInt(size);
 		if(this.pieces[x][y] == null){
-		    this.pieces[x][y] = new Superbar();	
+		    this.pieces[x][y] = new Superbat(x, y);	
 		}
 		else{
-			createSuperbar();
+			createSuperbat();
 		}
 	}
 
+	public void createExit(){
+		int x = r.nextInt(size);
+		int y = r.nextInt(size);
+		if(this.pieces[x][y] == null){
+		    this.pieces[x][y] = new Exit(x, y);	
+		}
+		else{
+			createExit();
+		}
+	}
+
+	public void createTreasure(){
+		int x = r.nextInt(size);
+		int y = r.nextInt(size);
+		if(this.pieces[x][y] == null){
+		    this.pieces[x][y] = new Treasure(x, y);	
+		}
+		else{
+			createTreasure();
+		}
+	}
 
 }
