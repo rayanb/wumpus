@@ -1,7 +1,7 @@
 public class Pitfall extends Piece{
 	public Pitfall(int row, int column){
 		super.row = row;
-		super.column = column;
+		super.col = column;
 	}
 
 	public static void main(String[] Args){

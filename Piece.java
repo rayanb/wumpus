@@ -1,6 +1,6 @@
 public class Piece {
 	int row;
-	int column;
+	int col;
 	public Piece(){
 		
 	}
