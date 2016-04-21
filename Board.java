@@ -24,7 +24,7 @@ class Board{
 		createWumpus();
 		createExit();
 		createTreasure();
-		
+		/*
 		int i = 0;
 		for(Piece[] pieces:this.pieces){
 			System.out.println("-----");
@@ -40,7 +40,9 @@ class Board{
 		}
 		System.out.println("count:"+i);
 	}
-
+	*/
+	}
+/*
 	public static void main(String[] Args){
 		Board board = new Board();
 		
@@ -51,7 +53,7 @@ class Board{
 		
 		
 	}
-
+*/
 	public int getRowAdventurer(){
 		
 		int row = 0;
@@ -148,6 +150,22 @@ class Board{
 		else{
 			createTreasure();
 		}
+	}
+	public void showBoard(){
+		int i = 0;
+		for(Piece[] pieces:this.pieces){
+			System.out.println("-----");
+			for(Piece piece : pieces){
+
+				System.out.print("| "+piece+" |");
+				if(piece != null){
+				  
+				}
+				i++;
+			}
+			System.out.println("----");
+		}
+		System.out.println("count:"+i);
 	}
 
 }
