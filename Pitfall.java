@@ -1,3 +1,4 @@
+
 public class Pitfall extends Piece{
 	public Pitfall(int row, int column){
 		super.row = row;

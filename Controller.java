@@ -1,6 +1,12 @@
+
 import java.util.Random;
 
+
+
 public class Controller {
+
+boolean moveIsTrue = false;
+
 
 	// this class will handle all the rules ;
 
@@ -9,6 +15,10 @@ public class Controller {
 	public boolean moveIsLegal(int rowB, int colB, int rowE, int colE, Piece[][] board) {
 
 
+		if(this.moveIsTrue){
+			return true;
+		}
+		
 		int[][] possibleMoves = possibleMoves(board);
 		Adventurer ad = (Adventurer) board[getRowAdventurer(board)][getColAdventurer(board)];
 		int length = board.length - 1; 
@@ -170,7 +180,7 @@ public class Controller {
 
 
 		if(shotIsLegal(rowAventurer,colAdventurer,rowShoot,colShoot, board)){
-			System.out.println("is legal");
+			
 			Adventurer adv = (Adventurer) board[rowAventurer][colAdventurer];
 			adv.shoot(rowShoot, colShoot, board);
 
@@ -186,8 +196,7 @@ public class Controller {
 				System.out.println("You have missed and the wumpus has moved");
 				Wumpus wump = (Wumpus) board[getRowWumpus(board)][getColWumpus(board)];
 				wump.move(board); 
-				System.out.println("Row wumpus :" + getRowWumpus(board));
-				System.out.println("Col wumpus :" + getColWumpus(board));
+				
 			}
 		}
 		else{
@@ -266,12 +275,12 @@ public class Controller {
 				else{
 
 					if((ad.col == 0 || ad.row == 0 || ad.row == length || ad.col == length)){
-						System.out.println("im in");
+						this.moveIsTrue = true; 
 						System.out.println("Row : " + testRow + ", Col : " + testCol);
 
 					}
 					else if(((testCol + testRow) - (ad.row + ad.col) == 1 || (testCol + testRow) - (ad.row + ad.col) == -1)){
-						
+						this.moveIsTrue = true; 
 						System.out.println("Row : " + testRow + ", Col : " + testCol);
 					}
 

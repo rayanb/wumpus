@@ -1,3 +1,4 @@
+
 public class Piece {
 	int row;
 	int col;
